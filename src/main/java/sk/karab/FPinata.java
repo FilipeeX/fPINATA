@@ -1,14 +1,30 @@
 package sk.karab;
 
-import org.bukkit.Bukkit;
+import messaging.Prefix;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class FPinata extends JavaPlugin {
 
 
     @Override
-    public void onEnable() {
+    public void onLoad() {
+        setupConfigs();
+    }
 
+
+    @Override
+    public void onEnable() {
+        setupPrefix();
+    }
+
+
+    private void setupConfigs() {
+
+    }
+
+
+    private void setupPrefix() {
+        new Prefix();
     }
 
 
