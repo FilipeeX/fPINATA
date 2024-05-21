@@ -28,7 +28,7 @@ public class Prefix {
 
 
     public static boolean exists() {
-        return instance.prefix == null || instance.prefix.isBlank();
+        return instance.prefix != null && !instance.prefix.isBlank();
     }
 
 

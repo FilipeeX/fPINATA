@@ -10,7 +10,7 @@ public class Log {
     public static void info(String message) {
 
         if (Prefix.exists()) {
-            Bukkit.getConsoleSender().sendMessage(Prefix.get() + " §f" + Chat.color(message));
+            Bukkit.getConsoleSender().sendMessage(Prefix.get() + Chat.color("&f " + message));
             return;
         }
 
@@ -21,7 +21,7 @@ public class Log {
     public static void warn(String message) {
 
         if (Prefix.exists()) {
-            Bukkit.getConsoleSender().sendMessage(Prefix.get() + " §e" + Chat.color(message));
+            Bukkit.getConsoleSender().sendMessage(Prefix.get() + Chat.color("&e " + message));
             return;
         }
 
@@ -32,7 +32,7 @@ public class Log {
     public static void err(String message) {
 
         if (Prefix.exists()) {
-            Bukkit.getConsoleSender().sendMessage(Prefix.get() + " §c" + Chat.color(message));
+            Bukkit.getConsoleSender().sendMessage(Prefix.get() + Chat.color("&c " + message));
             return;
         }
 

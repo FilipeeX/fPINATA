@@ -1,0 +1,18 @@
+name: fPINATA
+author: Filip Karab // filipeex
+description: A free pinata minecraft plugin, just as good as the premium ones.
+
+version: 1.0.0
+api-version: 1.20
+main: sk.karab.FPinata
+
+
+commands:
+  pinata:
+    usage: /<command> # todo
+    description: The main pinata command for fPINATA plugin.
+
+permissions:
+  bob:
+    default: op
+    # todo
