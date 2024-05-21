@@ -6,8 +6,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class FPinata extends JavaPlugin {
 
 
+    public static FPinata instance;
+
+
     @Override
     public void onLoad() {
+        setInstance();
         setupConfigs();
     }
 
@@ -18,8 +22,13 @@ public class FPinata extends JavaPlugin {
     }
 
 
-    private void setupConfigs() {
+    private void setInstance() {
+        instance = this;
+    }
 
+
+    private void setupConfigs() {
+        // todo create a config sys
     }
 
 
