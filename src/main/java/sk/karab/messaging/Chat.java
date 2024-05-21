@@ -1,4 +1,4 @@
-package debug;
+package sk.karab.messaging;
 
 import net.md_5.bungee.api.ChatColor;
 

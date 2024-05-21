@@ -1,7 +1,8 @@
-package debug;
+package sk.karab.debug;
 
-import messaging.Prefix;
 import org.bukkit.Bukkit;
+import sk.karab.messaging.Chat;
+import sk.karab.messaging.Prefix;
 
 public class Log {
 

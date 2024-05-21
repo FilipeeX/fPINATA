@@ -1,6 +1,4 @@
-package messaging;
-
-import debug.Chat;
+package sk.karab.messaging;
 
 public class Prefix {
 

@@ -1,7 +1,7 @@
 package sk.karab;
 
-import messaging.Prefix;
 import org.bukkit.plugin.java.JavaPlugin;
+import sk.karab.messaging.Prefix;
 
 public class FPinata extends JavaPlugin {
 
