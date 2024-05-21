@@ -5,6 +5,7 @@ import sk.karab.util.files.PluginFileTool;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 
 public class YmlConfig {
 
@@ -73,12 +74,17 @@ public class YmlConfig {
 
 
     public String getString(String key) {
-        return (String) get(key);
+        return config.getString(key);
     }
 
 
     public int getInt(String key) {
-        return (int) get(key);
+        return config.getInt(key);
+    }
+
+
+    public List<String> getStringList(String key) {
+        return config.getStringList(key);
     }
 
 

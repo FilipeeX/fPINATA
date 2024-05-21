@@ -1,12 +1,15 @@
 package sk.karab;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import sk.karab.commands.PinataCmd;
 import sk.karab.configuration.ConfigId;
 import sk.karab.configuration.YmlConfig;
-import sk.karab.debug.Log;
+import sk.karab.messaging.Language;
 import sk.karab.messaging.Prefix;
+import sk.karab.util.debug.Log;
 
 import java.io.File;
+import java.util.Objects;
 
 public class FPinata extends JavaPlugin {
 
@@ -30,6 +33,8 @@ public class FPinata extends JavaPlugin {
         Log.info("Enabling fPINATA");
 
         createInstances();
+        registerCommands();
+        registerListeners();
 
         Log.info("Successfully enabled fPINATA");
     }
@@ -55,7 +60,17 @@ public class FPinata extends JavaPlugin {
 
 
     private void createInstances() {
-        // instances
+        new Language();
+    }
+
+
+    private void registerCommands() {
+        Objects.requireNonNull(getCommand("pinata")).setExecutor(new PinataCmd());
+    }
+
+
+    private void registerListeners() {
+        // listeners go here
     }
 
 

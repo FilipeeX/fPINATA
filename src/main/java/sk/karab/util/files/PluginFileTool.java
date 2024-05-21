@@ -1,7 +1,7 @@
 package sk.karab.util.files;
 
 import sk.karab.FPinata;
-import sk.karab.debug.Log;
+import sk.karab.util.debug.Log;
 
 import java.io.File;
 import java.io.IOException;
