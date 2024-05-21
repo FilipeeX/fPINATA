@@ -1,5 +1,6 @@
 package sk.karab.messaging;
 
+
 public class Prefix {
 
 
@@ -26,7 +27,7 @@ public class Prefix {
 
 
     public static boolean exists() {
-        return instance.prefix != null;
+        return instance.prefix == null || instance.prefix.isBlank();
     }
 
 
