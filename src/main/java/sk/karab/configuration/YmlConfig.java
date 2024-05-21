@@ -12,7 +12,7 @@ public class YmlConfig {
     private static final HashMap<ConfigId, YmlConfig> storedConfigs = new HashMap<>();
 
 
-    public static YmlConfig get(ConfigId identifier) {
+    public static YmlConfig find(ConfigId identifier) {
         return storedConfigs.get(identifier);
     }
 
@@ -64,6 +64,21 @@ public class YmlConfig {
 
     public ConfigId getId() {
         return identifier;
+    }
+
+
+    public Object get(String key) {
+        return config.get(key);
+    }
+
+
+    public String getString(String key) {
+        return (String) get(key);
+    }
+
+
+    public int getInt(String key) {
+        return (int) get(key);
     }
 
 

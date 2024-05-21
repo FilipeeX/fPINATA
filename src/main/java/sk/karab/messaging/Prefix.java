@@ -1,6 +1,9 @@
 package sk.karab.messaging;
 
 
+import sk.karab.configuration.ConfigId;
+import sk.karab.configuration.YmlConfig;
+
 public class Prefix {
 
 
@@ -9,9 +12,7 @@ public class Prefix {
 
 
     public Prefix() {
-
-        // todo setup prefix from config, make it colorful
-
+        prefix = Chat.color(YmlConfig.find(ConfigId.CONFIG).getString("prefix"));
         instance = this;
     }
 
