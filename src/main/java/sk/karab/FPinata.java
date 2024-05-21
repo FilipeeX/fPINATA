@@ -8,7 +8,7 @@ public class FPinata extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getLogger().info("master");
+
     }
 
 
