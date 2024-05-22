@@ -3,22 +3,23 @@ package sk.karab.commands.subcmds;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import sk.karab.commands.ISubCommand;
-import sk.karab.pinata.Pinata;
+import sk.karab.messaging.Message;
+import sk.karab.messaging.Messaging;
 
 import java.util.ArrayList;
 
-public class DebugSubCMD implements ISubCommand {
+public class HelpSubCMD implements ISubCommand {
 
 
     @Override
     public String getSubArgument() {
-        return "debug";
+        return "help";
     }
 
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        Pinata.getPinatas().forEach((pinata -> sender.sendMessage(pinata.toString())));
+        Messaging.send(Message.HELP, sender);
     }
 
 

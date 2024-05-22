@@ -6,11 +6,19 @@ import sk.karab.commands.ISubCommand;
 import sk.karab.pinata.Pinata;
 import sk.karab.util.player.PlayerUtil;
 
+import java.util.ArrayList;
+
 public class SpawnPinataSubCMD implements ISubCommand {
 
 
     @Override
-    public void execute(CommandSender sender) {
+    public String getSubArgument() {
+        return "spawn";
+    }
+
+
+    @Override
+    public void execute(CommandSender sender, String[] args) {
 
         if (PlayerUtil.isNotPlayer(sender)) {
             // todo implement locations and allow console to spawn pinata at a location
@@ -23,6 +31,12 @@ public class SpawnPinataSubCMD implements ISubCommand {
         new Pinata(player.getLocation());
 
         // todo message
+    }
+
+
+    @Override
+    public ArrayList<String> complete(Player player, String[] args) {
+        return null;
     }
 
 

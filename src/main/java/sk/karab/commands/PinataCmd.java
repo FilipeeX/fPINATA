@@ -4,42 +4,49 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import sk.karab.commands.subcmds.DebugSubCMD;
-import sk.karab.commands.subcmds.HelpISubCMD;
+import sk.karab.commands.subcmds.HelpSubCMD;
 import sk.karab.commands.subcmds.SpawnPinataSubCMD;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PinataCmd implements TabExecutor {
 
 
-    ISubCommand helpSubCMD = new HelpISubCMD();
-    ISubCommand spawnPinataSubCMD = new SpawnPinataSubCMD();
-    ISubCommand debugSubCMD = new DebugSubCMD();
+    private final ArrayList<ISubCommand> subCommands;
+
+
+    public PinataCmd() {
+        subCommands = new ArrayList<>();
+
+        subCommands.add(new HelpSubCMD());
+        subCommands.add(new SpawnPinataSubCMD());
+        subCommands.add(new DebugSubCMD());
+    }
+
+
+    private ISubCommand getSubCommand(String arg) {
+
+        for (ISubCommand subCommand : subCommands)
+            if (subCommand.getSubArgument().equalsIgnoreCase(arg))
+                return subCommand;
+
+        return null;
+    }
 
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        int argAmount = args.length;
+        ISubCommand subCommand;
 
-        if (argAmount != 1) {
-            helpSubCMD.execute(sender);
-            return true;
-        }
+        if (args.length != 1) subCommand = getSubCommand("help");
+        else subCommand = getSubCommand(args[0]);
 
-        String arg = args[0];
+        if (subCommand == null) subCommand = getSubCommand("help");
+        assert subCommand != null;
 
-        if (arg.equalsIgnoreCase("spawn")) {
-            spawnPinataSubCMD.execute(sender);
-            return true;
-        }
-
-        if (arg.equalsIgnoreCase("debug")) {
-            debugSubCMD.execute(sender);
-            return true;
-        }
-
-        helpSubCMD.execute(sender);
+        subCommand.execute(sender, args);
         return true;
     }
 
