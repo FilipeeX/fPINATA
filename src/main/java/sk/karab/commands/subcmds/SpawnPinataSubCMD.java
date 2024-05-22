@@ -1,0 +1,27 @@
+package sk.karab.commands.subcmds;
+
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import sk.karab.commands.ISubCommand;
+import sk.karab.pinata.Pinata;
+import sk.karab.util.player.PlayerUtil;
+
+public class SpawnPinataSubCMD implements ISubCommand {
+
+
+    @Override
+    public void execute(CommandSender sender) {
+
+        if (PlayerUtil.isNotPlayer(sender)) {
+            // todo implement locations and allow console to spawn pinata at a location
+            return;
+        }
+
+        Player player = PlayerUtil.asPlayer(sender);
+        assert player != null;
+
+        new Pinata(player.getLocation());
+    }
+
+
+}

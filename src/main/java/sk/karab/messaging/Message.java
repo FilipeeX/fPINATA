@@ -1,6 +1,6 @@
 package sk.karab.messaging;
 
-public enum MessageId {
+public enum Message {
 
 
     HELP
