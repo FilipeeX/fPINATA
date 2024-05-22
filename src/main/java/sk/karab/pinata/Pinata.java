@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Pinata {
 
 
-    public static ArrayList<Pinata> pinatas = new ArrayList<>();
+    private static final ArrayList<Pinata> pinatas = new ArrayList<>();
     private final LivingEntity camel;
 
 
@@ -31,7 +31,7 @@ public class Pinata {
     }
 
 
-    public Entity getCamel() {
+    public LivingEntity getCamel() {
         return camel;
     }
 

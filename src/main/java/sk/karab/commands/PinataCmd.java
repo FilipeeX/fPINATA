@@ -3,6 +3,7 @@ package sk.karab.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import sk.karab.commands.subcmds.DebugSubCMD;
 import sk.karab.commands.subcmds.HelpISubCMD;
 import sk.karab.commands.subcmds.SpawnPinataSubCMD;
 
@@ -13,6 +14,7 @@ public class PinataCmd implements TabExecutor {
 
     ISubCommand helpSubCMD = new HelpISubCMD();
     ISubCommand spawnPinataSubCMD = new SpawnPinataSubCMD();
+    ISubCommand debugSubCMD = new DebugSubCMD();
 
 
     @Override
@@ -27,15 +29,17 @@ public class PinataCmd implements TabExecutor {
 
         String arg = args[0];
 
-        if (arg.equalsIgnoreCase("help")) {
-            helpSubCMD.execute(sender);
+        if (arg.equalsIgnoreCase("spawn")) {
+            spawnPinataSubCMD.execute(sender);
             return true;
         }
 
-        if (arg.equalsIgnoreCase("spawn")) {
-            spawnPinataSubCMD.execute(sender);
+        if (arg.equalsIgnoreCase("debug")) {
+            debugSubCMD.execute(sender);
+            return true;
         }
 
+        helpSubCMD.execute(sender);
         return true;
     }
 

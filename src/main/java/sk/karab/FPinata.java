@@ -1,11 +1,15 @@
 package sk.karab;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import sk.karab.commands.PinataCmd;
 import sk.karab.configuration.ConfigId;
 import sk.karab.configuration.YmlConfig;
+import sk.karab.listeners.PinataListener;
 import sk.karab.messaging.Language;
 import sk.karab.messaging.Prefix;
+import sk.karab.pinata.Pinata;
 import sk.karab.util.debug.Log;
 
 import java.io.File;
@@ -40,6 +44,15 @@ public class FPinata extends JavaPlugin {
     }
 
 
+    @Override
+    public void onDisable() {
+        Log.info("Disabling fPINATA");
+
+        killPinatas();
+
+        Log.info("Successfully disabled fPINATA");
+    }
+
     private void setInstance() {
         instance = this;
     }
@@ -70,7 +83,15 @@ public class FPinata extends JavaPlugin {
 
 
     private void registerListeners() {
-        // listeners go here
+
+        PluginManager pluginManager = Bukkit.getPluginManager();
+
+        pluginManager.registerEvents(new PinataListener(), this);
+    }
+
+
+    private void killPinatas() {
+        Pinata.getPinatas().forEach((pinata -> pinata.getCamel().setHealth(0)));
     }
 
 

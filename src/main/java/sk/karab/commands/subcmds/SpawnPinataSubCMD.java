@@ -21,6 +21,8 @@ public class SpawnPinataSubCMD implements ISubCommand {
         assert player != null;
 
         new Pinata(player.getLocation());
+
+        // todo message
     }
 
 
