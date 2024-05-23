@@ -6,8 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import sk.karab.commands.PinataCmd;
 import sk.karab.configuration.ConfigId;
 import sk.karab.configuration.YmlConfig;
-import sk.karab.database.OldDatabase;
-import sk.karab.database.OldSQLite;
+import sk.karab.database.Database;
 import sk.karab.listeners.PinataListener;
 import sk.karab.messaging.Language;
 import sk.karab.messaging.Prefix;
@@ -21,7 +20,6 @@ public class FPinata extends JavaPlugin {
 
 
     public static FPinata instance;
-    private OldDatabase db;
 
 
     @Override
@@ -40,11 +38,10 @@ public class FPinata extends JavaPlugin {
         Log.info("Enabling fPINATA");
 
         createInstances();
+        loadUpDatabase();
+
         registerCommands();
         registerListeners();
-
-        db = new OldSQLite(this);
-        db.load();
 
         Log.info("Successfully enabled fPINATA");
     }
@@ -57,10 +54,6 @@ public class FPinata extends JavaPlugin {
         killPinatas();
 
         Log.info("Successfully disabled fPINATA");
-    }
-
-    public OldDatabase getRDatabase() {
-        return this.db;
     }
 
     private void setInstance() {
@@ -84,6 +77,11 @@ public class FPinata extends JavaPlugin {
 
     private void createInstances() {
         new Language();
+    }
+
+
+    private void loadUpDatabase() {
+        new Database("fpinata.db", getDataFolder());
     }
 
 
