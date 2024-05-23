@@ -3,7 +3,9 @@ package sk.karab.database.locations;
 import sk.karab.database.Database;
 import sk.karab.database.ISQLTask;
 import sk.karab.database.SafeSQL;
+import sk.karab.util.debug.Log;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -15,28 +17,28 @@ public class LocationDatabase {
 
     private final String TABLE_QUERY = """
             CREATE TABLE IF NOT EXISTS `locations` (
-            	`identifier` VARCHAR(32) NOT NULL,
-            	`world` VARCHAR(32) NOT NULL,
-            	`x` DOUBLE() NOT NULL,
-            	`y` DOUBLE() NOT NULL,
-            	`z` DOUBLE() NOT NULL,
-            	`pitch` FLOAT() NOT NULL,
-            	`yaw` FLOAT() NOT NULL,
-            	PRIMARY KEY (`identifier`)
-            );
+                `identifier` VARCHAR(32) NOT NULL,
+                `world` VARCHAR(32) NOT NULL,
+                `x` DOUBLE NOT NULL,
+                `y` DOUBLE NOT NULL,
+                `z` DOUBLE NOT NULL,
+                `pitch` FLOAT NOT NULL,
+                `yaw` FLOAT NOT NULL,
+                PRIMARY KEY (`identifier`)
+              );
             """;
     private final String ADD_LOC_QUERY = """
             INSERT INTO `locations` VALUES (
-            "%identifier",
-            "%world",
-            %x,
-            %y,
-            %z,
-            %pitch,
-            %yaw);
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?);
             """;
     private final String CHECK_LOCATION_EXISTENCE_QUERY = """
-            SELECT COUNT(*) AS amount FROM `locations` WHERE `identifier` = %identifier;
+            SELECT COUNT(*) AS amount FROM `locations` WHERE `identifier` = "%identifier";
             """;
 
 
@@ -66,20 +68,21 @@ public class LocationDatabase {
     private boolean _addLocation(PinataLocation pinataLocation) {
 
         assert pinataLocation.location().getWorld() != null;
-
         if (_locationExists(pinataLocation.identifier())) return false;
 
         ISQLTask task = () -> {
 
-            Statement statement = Database.getConn().createStatement();
-            statement.executeUpdate(ADD_LOC_QUERY
-                    .replace("%identifier", pinataLocation.identifier())
-                    .replace("%world", pinataLocation.location().getWorld().getName())
-                    .replace("%x", pinataLocation.location().getX() + "")
-                    .replace("%y", pinataLocation.location().getY() + "")
-                    .replace("%z", pinataLocation.location().getZ() + "")
-                    .replace("%pitch", pinataLocation.location().getPitch() + "")
-                    .replace("%yaw", pinataLocation.location().getYaw() + ""));
+            PreparedStatement statement = Database.getConn().prepareStatement(ADD_LOC_QUERY);
+
+            statement.setString(1, pinataLocation.identifier());
+            statement.setString(2, pinataLocation.location().getWorld().getName());
+            statement.setDouble(3, pinataLocation.location().getX());
+            statement.setDouble(4, pinataLocation.location().getY());
+            statement.setDouble(5, pinataLocation.location().getZ());
+            statement.setFloat(6, pinataLocation.location().getPitch());
+            statement.setFloat(7, pinataLocation.location().getYaw());
+
+            statement.executeUpdate();
             statement.close();
 
         };
@@ -113,7 +116,7 @@ public class LocationDatabase {
     }
 
 
-    public boolean locationExists(String identifier) {
+    public static boolean locationExists(String identifier) {
         return instance._locationExists(identifier);
     }
 

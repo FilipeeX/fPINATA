@@ -3,6 +3,8 @@ package sk.karab.commands.subcmds;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import sk.karab.commands.ISubCommand;
+import sk.karab.database.locations.LocationDatabase;
+import sk.karab.database.locations.PinataLocation;
 import sk.karab.pinata.Pinata;
 
 import java.util.ArrayList;
@@ -18,7 +20,13 @@ public class DebugSubCMD implements ISubCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        Pinata.getPinatas().forEach((pinata -> sender.sendMessage(pinata.toString())));
+
+        Player player = (Player) sender;
+
+        player.sendMessage("---");
+        player.sendMessage(LocationDatabase.locationExists(player.getDisplayName()) + "");
+        player.sendMessage(LocationDatabase.addLocation(new PinataLocation(player.getDisplayName(), player.getLocation())) + "");
+        player.sendMessage(LocationDatabase.locationExists(player.getDisplayName()) + "");
     }
 
 

@@ -7,6 +7,9 @@ import sk.karab.commands.PinataCmd;
 import sk.karab.configuration.ConfigId;
 import sk.karab.configuration.YmlConfig;
 import sk.karab.database.Database;
+import sk.karab.database.SafeSQL;
+import sk.karab.database.locations.LocationDatabase;
+import sk.karab.database.locations.PinataLocation;
 import sk.karab.listeners.PinataListener;
 import sk.karab.messaging.Language;
 import sk.karab.messaging.Prefix;
@@ -81,7 +84,11 @@ public class FPinata extends JavaPlugin {
 
 
     private void loadUpDatabase() {
+
+        new SafeSQL();
         new Database("fpinata.db", getDataFolder());
+
+        new LocationDatabase();
     }
 
 
