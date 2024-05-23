@@ -69,4 +69,13 @@ public class Database {
     }
 
 
+    public static Database getDatabase() {
+        return database;
+    }
+
+    public static Connection getConn() {
+        return getDatabase().getConnection();
+    }
+
+
 }
