@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "sk.karab"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -20,17 +20,19 @@ repositories {
     */
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/central")
-    // mavenLocal() // This is needed for CraftBukkit and Spigot.
 }
+
 
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
+    compileOnly("org.xerial:sqlite-jdbc:3.45.3.0")
+
     // Pick only one of these and read the comment in the repositories block.
     compileOnly("org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT") // The Spigot API with no shadowing. Requires the OSS repo.
-    compileOnly("org.spigotmc:spigot:1.20.2-R0.1-SNAPSHOT") // The full Spigot server with no shadowing. Requires mavenLocal.
 }
+
 
 tasks.test {
     useJUnitPlatform()
