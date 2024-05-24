@@ -1,10 +1,13 @@
 package sk.karab.database.locations;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import sk.karab.database.Database;
 import sk.karab.database.ISQLTask;
 import sk.karab.database.SafeSQL;
 
+import javax.annotation.Nullable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -28,7 +31,9 @@ public class LocationDatabase {
               );
             """;
     private final String ADD_LOC_QUERY = "INSERT INTO `locations` VALUES (?,?,?,?,?,?,?);";
-    private final String CHECK_LOCATION_EXISTENCE_QUERY = "SELECT COUNT(*) AS amount FROM `locations` WHERE `identifier` = ?;";
+    private final String CHECK_LOC_EXISTENCE_QUERY = "SELECT COUNT(*) AS amount FROM `locations` WHERE `identifier` = ?;";
+    private final String REMOVE_LOC_QUERY = "DELETE FROM `locations` WHERE `identifier` = ?;";
+    private final String GET_LOC_QUERY = "SELECT 1 FROM `locations` WHERE `identifier` = ?;";
 
 
     public LocationDatabase() {
@@ -50,7 +55,6 @@ public class LocationDatabase {
 
         };
         SafeSQL.run(task);
-
     }
 
 
@@ -92,7 +96,7 @@ public class LocationDatabase {
 
         ISQLTask task = () -> {
 
-            PreparedStatement statement = Database.getConn().prepareStatement(CHECK_LOCATION_EXISTENCE_QUERY);
+            PreparedStatement statement = Database.getConn().prepareStatement(CHECK_LOC_EXISTENCE_QUERY);
             statement.setString(1, identifier);
             ResultSet results = statement.executeQuery();
 
@@ -102,14 +106,64 @@ public class LocationDatabase {
             statement.close();
             results.close();
         };
-        SafeSQL.run(task);
+        if (!SafeSQL.run(task)) return true;
 
         return result.get();
     }
 
-
     public static boolean locationExists(String identifier) {
         return instance._locationExists(identifier);
+    }
+
+
+    private boolean _removeLocation(String identifier) {
+
+        if (!_locationExists(identifier)) return false;
+
+        ISQLTask task = () -> {
+
+            PreparedStatement statement = Database.getConn().prepareStatement(REMOVE_LOC_QUERY);
+            statement.setString(1, identifier);
+
+            statement.executeUpdate();
+            statement.close();
+        };
+
+        return SafeSQL.run(task);
+    }
+
+    public static boolean removeLocation(String identifier) {
+        return instance._removeLocation(identifier);
+    }
+
+
+    @Nullable
+    private PinataLocation _getLocation(String identifier) {
+
+        if (!_locationExists(identifier)) return null;
+
+        AtomicLocation location = new AtomicLocation(null);
+        ISQLTask task = () -> {
+
+            PreparedStatement statement = Database.getConn().prepareStatement(GET_LOC_QUERY);
+            statement.setString(1, identifier);
+
+            ResultSet results = statement.executeQuery();
+            results.next();
+
+            World world = Bukkit.getWorld(results.getString("world"));
+            double x = results.getDouble("x");
+            double y = results.getDouble("y");
+            double z = results.getDouble("z");
+            float pitch = results.getFloat("pitch");
+            float yaw = results.getFloat("yaw");
+
+            location.set(new Location(world, x, y, z, yaw, pitch));
+        };
+
+        if (!SafeSQL.run(task)) return null;
+
+        return new PinataLocation(identifier, location.get());
     }
 
 
