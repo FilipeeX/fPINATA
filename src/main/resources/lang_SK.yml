@@ -1,7 +1,48 @@
 help:
   - "&7>&8-------- &#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8--------&7<"
   - ""
-  - "  &#FB4A58/pinata help &8- &7ukáže túto správu"
   - "  &#FB4A58/pinata spawn &8- &7manuálne spawne piňatu"
   - ""
+  - "  &#FB4A58/pinata location add <name> &8- &7pridá pomenovanú lokáciu"
+  - "  &#FB4A58/pinata location remove <name> &8- &7odstráni lokáciu"
+  - "  &#FB4A58/pinata location tp <name> &8- &7teleportuje na lokáciu"
+  - "  &#FB4A58/pinata location list &8- &7vypíše všetky uložené lokácie"
+  - ""
+  - "  &#FB4A58/pinata help &8- &7ukáže túto správu"
+  - ""
   - "&7>&8-----------------------&7<"
+player_only:
+  - "%prefix &cTáto akcia môže byť vykonaná len hráčom!"
+no_permission:
+  - "%prefix &cNa túto akciu nemáš oprávnenie!"
+
+location_name_too_long:
+  - "&c%prefix &cTvoj názov pre lokáciu %identifier má %length znakov, maximum povolených je 32."
+
+location_add_success:
+  - "%prefix &aLokácia %identifier na [~%x, ~%y, ~%z] bola úspešne vytvorená."
+location_add_failure:
+  - "%prefix &cBuď lokácia už exisuje, alebo nastala chyba pri vytváraní lokácie %identifier, možno nájdeš viac detailov v konzoli."
+
+location_remove_success:
+  - "%prefix &aLokácia %identifier bola odstránená!"
+location_remove_failure:
+  - "%prefix &cBuď lokácia %identifier neexistuje, alebo nastala chyba pri jej odstraňovaní, možno nájdeš viac detailov v konzole."
+
+location_tp_success:
+  - "%prefix &aSi úspešne teleportovaný na lokáciu %identifier."
+location_tp_failure:
+  - "%prefix &cBuď lokácia %identifier neexistuje, alebo nastala chyba pri jej vyťahovaní z databázy, možno nájdeš viac detailov v konzoli."
+
+location_list_header:
+  - "&7>&8-------- &#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8--------&7<"
+  - ""
+location_list_entry:
+  - "  &#F71DFF%identifier &8 - &7%world; &#F71DFF%x&7, &#F71DFF%y&7, &#F71DFF%z"
+location_list_footer:
+  - ""
+  - "&7>&8-----------------------&7<"
+location_list_nothing_to_show:
+  - "  &cNenašli sa žiadne lokácie na zobrazenie."
+location_list_failure:
+  - "%prefix &cNastala chyba počas vyťahovaní informácií z databázy, mal by si nájsť viac detailov v konzoli."

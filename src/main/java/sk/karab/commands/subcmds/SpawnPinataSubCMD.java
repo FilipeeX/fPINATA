@@ -4,7 +4,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import sk.karab.commands.ISubCommand;
 import sk.karab.pinata.Pinata;
-import sk.karab.util.player.PlayerUtil;
+import sk.karab.util.PlayerUtil;
 
 import java.util.ArrayList;
 

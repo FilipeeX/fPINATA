@@ -5,7 +5,6 @@ import org.bukkit.entity.Player;
 import sk.karab.commands.ISubCommand;
 import sk.karab.database.locations.LocationDatabase;
 import sk.karab.database.locations.PinataLocation;
-import sk.karab.pinata.Pinata;
 
 import java.util.ArrayList;
 

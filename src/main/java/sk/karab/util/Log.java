@@ -1,4 +1,4 @@
-package sk.karab.util.debug;
+package sk.karab.util;
 
 import org.bukkit.Bukkit;
 import sk.karab.messaging.Chat;

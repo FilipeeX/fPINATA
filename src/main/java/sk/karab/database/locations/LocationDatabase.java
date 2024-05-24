@@ -34,7 +34,7 @@ public class LocationDatabase {
     private final String ADD_LOC_QUERY = "INSERT INTO `locations` VALUES (?,?,?,?,?,?,?);";
     private final String CHECK_LOC_EXISTENCE_QUERY = "SELECT COUNT(*) AS amount FROM `locations` WHERE `identifier` = ?;";
     private final String REMOVE_LOC_QUERY = "DELETE FROM `locations` WHERE `identifier` = ?;";
-    private final String GET_LOC_QUERY = "SELECT 1 FROM `locations` WHERE `identifier` = ?;";
+    private final String GET_LOC_QUERY = "SELECT * FROM `locations` WHERE `identifier` = ?;";
     private final String GET_LOCS_QUERY = "SELECT * FROM `locations`;";
 
 
@@ -175,6 +175,7 @@ public class LocationDatabase {
     }
 
 
+    @Nullable
     private ArrayList<PinataLocation> _getLocations() {
         ArrayList<PinataLocation> locations = new ArrayList<>();
 
@@ -205,6 +206,10 @@ public class LocationDatabase {
         if (!SafeSQL.run(task)) return null;
 
         return locations;
+    }
+
+    public static ArrayList<PinataLocation> getLocations() {
+        return instance._getLocations();
     }
 
 

@@ -1,7 +1,7 @@
 package sk.karab.configuration;
 
 import org.bukkit.configuration.file.YamlConfiguration;
-import sk.karab.util.files.PluginFileTool;
+import sk.karab.util.PluginFileTool;
 
 import java.io.File;
 import java.util.HashMap;

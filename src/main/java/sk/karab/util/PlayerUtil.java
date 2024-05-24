@@ -1,4 +1,4 @@
-package sk.karab.util.player;
+package sk.karab.util;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

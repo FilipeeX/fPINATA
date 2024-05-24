@@ -9,12 +9,12 @@ import sk.karab.configuration.YmlConfig;
 import sk.karab.database.Database;
 import sk.karab.database.SafeSQL;
 import sk.karab.database.locations.LocationDatabase;
-import sk.karab.database.locations.PinataLocation;
 import sk.karab.listeners.PinataListener;
 import sk.karab.messaging.Language;
 import sk.karab.messaging.Prefix;
 import sk.karab.pinata.Pinata;
-import sk.karab.util.debug.Log;
+import sk.karab.util.NumberUtil;
+import sk.karab.util.Log;
 
 import java.io.File;
 import java.util.Objects;
@@ -80,6 +80,7 @@ public class FPinata extends JavaPlugin {
 
     private void createInstances() {
         new Language();
+        new NumberUtil();
     }
 
 
@@ -106,7 +107,11 @@ public class FPinata extends JavaPlugin {
 
 
     private void killPinatas() {
-        Pinata.getPinatas().forEach((pinata -> pinata.getCamel().setHealth(0)));
+        try {
+            Pinata.getPinatas().forEach((pinata -> pinata.getCamel().setHealth(0)));
+        } catch (NoClassDefFoundError error) {
+            Log.info("No pinatas to kill :)");
+        }
     }
 
 

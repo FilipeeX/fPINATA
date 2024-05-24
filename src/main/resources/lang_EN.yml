@@ -1,7 +1,48 @@
 help:
   - "&7>&8-------- &#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8--------&7<"
   - ""
-  - "  &#FB4A58/pinata help &8- &7shows this help message"
   - "  &#FB4A58/pinata spawn &8- &7manually spawns a pinata"
   - ""
+  - "  &#FB4A58/pinata location add <name> &8- &7adds a named location"
+  - "  &#FB4A58/pinata location remove <name> &8- &7removes a location"
+  - "  &#FB4A58/pinata location tp <name> &8- &7teleports you to a location"
+  - "  &#FB4A58/pinata location list &8- &7lists all the saved locations"
+  - ""
+  - "  &#FB4A58/pinata help &8- &7shows this help message"
+  - ""
   - "&7>&8-----------------------&7<"
+player_only:
+  - "%prefix &cThis action can be only done by a player!"
+no_permission:
+  - "%prefix &cYou don't have the permission to do that!"
+
+location_name_too_long:
+  - "%prefix &cYour location name %identifier is %length characters long, maximum allowed is 32."
+
+location_add_success:
+  - "%prefix &aLocation %identifier at [~%x, ~%y, ~%z] successfully created."
+location_add_failure:
+  - "%prefix &cEither the location already exists, or an error occurred while creating the location (%identifier), you might find more details in the console."
+
+location_remove_success:
+  - "%prefix &aThe location %identifier was successfully deleted!"
+location_remove_failure:
+  - "%prefix &cEither the location %identifier doesn't exist, or there was an error while trying to remove it, you might find more details in the console."
+
+location_tp_success:
+  - "%prefix &aSuccessfully teleported you to the location %identifier."
+location_tp_failure:
+  - "%prefix &cEither the location %identifier doesn't exist, or there was an error trying to retrieve it from the database, you might find more details in the console."
+
+location_list_header:
+  - "&7>&8-------- &#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8--------&7<"
+  - ""
+location_list_entry:
+  - "  &#F71DFF%identifier &8 - &7%world; &#F71DFF%x&7, &#F71DFF%y&7, &#F71DFF%z"
+location_list_footer:
+  - ""
+  - "&7>&8-----------------------&7<"
+location_list_nothing_to_show:
+  - "  &cCouldn't find any locations to list."
+location_list_failure:
+  - "%prefix &cAn error occurred while trying to retrieve locations from the database, you should find more details in the console."

@@ -1,6 +1,6 @@
 package sk.karab.database;
 
-import sk.karab.util.debug.Log;
+import sk.karab.util.Log;
 
 import java.sql.SQLException;
 
