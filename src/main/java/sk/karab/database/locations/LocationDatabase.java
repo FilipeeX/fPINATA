@@ -166,5 +166,9 @@ public class LocationDatabase {
         return new PinataLocation(identifier, location.get());
     }
 
+    public static PinataLocation getLocation(String identifier) {
+        return instance._getLocation(identifier);
+    }
+
 
 }
