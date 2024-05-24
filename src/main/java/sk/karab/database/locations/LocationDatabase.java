@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class LocationDatabase {
@@ -34,6 +35,7 @@ public class LocationDatabase {
     private final String CHECK_LOC_EXISTENCE_QUERY = "SELECT COUNT(*) AS amount FROM `locations` WHERE `identifier` = ?;";
     private final String REMOVE_LOC_QUERY = "DELETE FROM `locations` WHERE `identifier` = ?;";
     private final String GET_LOC_QUERY = "SELECT 1 FROM `locations` WHERE `identifier` = ?;";
+    private final String GET_LOCS_QUERY = "SELECT * FROM `locations`;";
 
 
     public LocationDatabase() {
@@ -159,8 +161,10 @@ public class LocationDatabase {
             float yaw = results.getFloat("yaw");
 
             location.set(new Location(world, x, y, z, yaw, pitch));
-        };
 
+            statement.close();
+            results.close();
+        };
         if (!SafeSQL.run(task)) return null;
 
         return new PinataLocation(identifier, location.get());
@@ -168,6 +172,39 @@ public class LocationDatabase {
 
     public static PinataLocation getLocation(String identifier) {
         return instance._getLocation(identifier);
+    }
+
+
+    private ArrayList<PinataLocation> _getLocations() {
+        ArrayList<PinataLocation> locations = new ArrayList<>();
+
+        ISQLTask task = () -> {
+
+            Statement statement = Database.getConn().createStatement();
+            ResultSet results = statement.executeQuery(GET_LOCS_QUERY);
+
+            while (results.next()) {
+
+                String identifier = results.getString("identifier");
+                World world = Bukkit.getWorld(results.getString("world"));
+                double x = results.getDouble("x");
+                double y = results.getDouble("y");
+                double z = results.getDouble("z");
+                float pitch = results.getFloat("pitch");
+                float yaw = results.getFloat("yaw");
+
+                locations.add(new PinataLocation(
+                        identifier,
+                        new Location(world, x, y, z, yaw, pitch)
+                ));
+            }
+
+            statement.close();
+            results.close();
+        };
+        if (!SafeSQL.run(task)) return null;
+
+        return locations;
     }
 
 
