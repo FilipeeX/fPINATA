@@ -107,7 +107,7 @@ public class FPinata extends JavaPlugin {
 
 
     private void killPinatas() {
-        try {
+        try {     // this is done because of a really weird bug with loading the Pinata class, no idea why or what's happening, but this does silence it
             Pinata.getPinatas().forEach((pinata -> pinata.getCamel().setHealth(0)));
         } catch (NoClassDefFoundError error) {
             Log.info("No pinatas to kill :)");

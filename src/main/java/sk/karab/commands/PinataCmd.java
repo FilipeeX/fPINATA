@@ -1,20 +1,26 @@
 package sk.karab.commands;
 
+import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 import sk.karab.commands.subcmds.DebugSubCMD;
 import sk.karab.commands.subcmds.HelpSubCMD;
 import sk.karab.commands.subcmds.LocationSubCMD;
 import sk.karab.commands.subcmds.SpawnPinataSubCMD;
+import sk.karab.util.PlayerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PinataCmd implements TabExecutor {
 
 
     private final ArrayList<ISubCommand> subCommands;
+    private final Random random;
 
 
     public PinataCmd() {
@@ -24,6 +30,8 @@ public class PinataCmd implements TabExecutor {
         subCommands.add(new SpawnPinataSubCMD());
         subCommands.add(new DebugSubCMD());
         subCommands.add(new LocationSubCMD());
+
+        random = new Random();
     }
 
 
@@ -69,6 +77,15 @@ public class PinataCmd implements TabExecutor {
             if (suggestion.startsWith(args[args.length - 1])) approvedSuggestions.add(suggestion);
         });
 
+        if (!PlayerUtil.isNotPlayer(sender)) {
+
+            Player player = PlayerUtil.asPlayer(sender);
+            assert player != null;
+
+            player.playSound(player, Sound.UI_BUTTON_CLICK, SoundCategory.MASTER, random.nextFloat(0.85f, 1.25f), 0.5f);
+        }
+
+        approvedSuggestions.sort(String::compareToIgnoreCase);
         return approvedSuggestions;
     }
 

@@ -34,6 +34,7 @@ public class LocationSubCMD implements ISubCommand {
 
         if (args.length < 2) {
             Messaging.send(Message.HELP, sender);
+            return;
         }
         String subArgument = args[1];
 
@@ -60,7 +61,27 @@ public class LocationSubCMD implements ISubCommand {
 
     @Override
     public ArrayList<String> complete(CommandSender sender, String[] args) {
-        return null;
+        ArrayList<String> suggestions = new ArrayList<>();
+
+        switch (args.length) {
+            case 2:
+                suggestions.add("add");
+                suggestions.add("remove");
+                suggestions.add("tp");
+                suggestions.add("list");
+                break;
+            case 3:
+                switch (args[1]) {
+                    case "add":
+                        suggestions.add("<name>");
+                        break;
+                    case "remove", "tp":
+                        LocationDatabase.getLocations().forEach((location) -> suggestions.add(location.identifier()));
+                        break;
+                }
+        }
+
+        return suggestions;
     }
 
 
@@ -202,7 +223,7 @@ public class LocationSubCMD implements ISubCommand {
 
 
     private boolean isIdentifierValid(String identifier) {
-        return !identifier.isBlank() && identifier.length() < 33;
+        return !identifier.isBlank() && identifier.length() < 32 + 1;
     }
 
 
