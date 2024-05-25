@@ -24,11 +24,7 @@ public class HelpSubCMD implements ISubCommand {
 
     @Override
     public ArrayList<String> complete(CommandSender sender, String[] args) {
-
-        ArrayList<String> suggestions = new ArrayList<>();
-        suggestions.add("help");
-
-        return suggestions;
+        return new ArrayList<>();
     }
 
 

@@ -3,6 +3,7 @@ package sk.karab.commands.subcmds;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import sk.karab.commands.ISubCommand;
+import sk.karab.database.locations.LocationDatabase;
 import sk.karab.pinata.Pinata;
 import sk.karab.util.PlayerUtil;
 
@@ -36,7 +37,12 @@ public class SpawnPinataSubCMD implements ISubCommand {
 
     @Override
     public ArrayList<String> complete(CommandSender sender, String[] args) {
-        return null;
+        ArrayList<String> suggestions = new ArrayList<>();
+
+        if (args.length == 2)
+            LocationDatabase.getLocations().forEach((location) -> suggestions.add(location.identifier()));
+
+        return suggestions;
     }
 
 

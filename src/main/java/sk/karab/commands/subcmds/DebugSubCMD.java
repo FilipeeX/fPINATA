@@ -1,5 +1,6 @@
 package sk.karab.commands.subcmds;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import sk.karab.commands.ISubCommand;
@@ -31,11 +32,7 @@ public class DebugSubCMD implements ISubCommand {
 
     @Override
     public ArrayList<String> complete(CommandSender sender, String[] args) {
-
-        ArrayList<String> suggestions = new ArrayList<>();
-        suggestions.add("debug");
-
-        return suggestions;
+        return new ArrayList<>();
     }
 
 
