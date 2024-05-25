@@ -31,7 +31,11 @@ public class DebugSubCMD implements ISubCommand {
 
     @Override
     public ArrayList<String> complete(CommandSender sender, String[] args) {
-        return null;
+
+        ArrayList<String> suggestions = new ArrayList<>();
+        suggestions.add("debug");
+
+        return suggestions;
     }
 
 
