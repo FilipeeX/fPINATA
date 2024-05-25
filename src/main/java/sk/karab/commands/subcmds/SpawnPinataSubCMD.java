@@ -35,7 +35,7 @@ public class SpawnPinataSubCMD implements ISubCommand {
 
 
     @Override
-    public ArrayList<String> complete(Player player, String[] args) {
+    public ArrayList<String> complete(CommandSender sender, String[] args) {
         return null;
     }
 

@@ -55,7 +55,16 @@ public class PinataCmd implements TabExecutor {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-        return List.of();
+
+        ISubCommand subCommand;
+
+        if (args.length < 1) subCommand = getSubCommand("help");
+        else subCommand = getSubCommand(args[0]);
+
+        if (subCommand == null) subCommand = getSubCommand("help");
+        assert subCommand != null;
+
+        return subCommand.complete(sender, args);
     }
 
 

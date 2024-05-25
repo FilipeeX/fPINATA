@@ -1,7 +1,6 @@
 package sk.karab.commands.subcmds;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import sk.karab.commands.ISubCommand;
 import sk.karab.messaging.Message;
 import sk.karab.messaging.Messaging;
@@ -24,7 +23,7 @@ public class HelpSubCMD implements ISubCommand {
 
 
     @Override
-    public ArrayList<String> complete(Player player, String[] args) {
+    public ArrayList<String> complete(CommandSender sender, String[] args) {
         return null;
     }
 
