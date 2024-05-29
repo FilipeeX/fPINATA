@@ -2,7 +2,7 @@ help:
   - "&7>&8-------- &#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8--------&7<"
   - ""
   - "  &#FB4A58/pinata spawn [lokácia] &8- &7manuálne spawne piňatu"
-  - "                           &8- &7* poprípadne: na nastavenej lokácií"
+  - "                               &7* poprípadne: na nastavenej lokácií"
   - ""
   - "  &#FB4A58/pinata location add <name> &8- &7pridá pomenovanú lokáciu"
   - "  &#FB4A58/pinata location remove <name> &8- &7odstráni lokáciu"
@@ -20,6 +20,10 @@ player_only:
   - "%prefix &cTáto akcia môže byť vykonaná len hráčom!"
 no_permission:
   - "%prefix &cNa túto akciu nemáš oprávnenie!"
+invalid_number:
+  - "%prefix &cReťazec %string nie je validné číslo!"
+only_positive_numbers:
+  - "%prefix &cČísla nemôžu byť záporné, musia byť väčšie ako 0."
 
 location_name_too_long:
   - "&c%prefix &cTvoj názov pre lokáciu %identifier má %length znakov, maximum povolených je 32."
@@ -58,3 +62,10 @@ spawn_location_success:
   - "%prefix &aPinata bola úspešne spawnutá na lokácii %identifier."
 invalid_location:
   - "%prefix &cPinata nemohla byť spawnutá na lokácií %identifier, pretože táto lokácia nebola nájdená!"
+
+votes_add_failure:
+  - "%prefix &cNastala neznáma chyba, nebolo možné pridať hlasy do databázy!"
+votes_remove_failure:
+  - "%prefix &cBuď je výsledný počet hlasov záporný, alebo nastala neznáma chyba, každopádne nebolo možné odobrať hlasy z databázy!"
+votes_reset_failure:
+  - "%prefix &cNastala neznáma chyba, nebolo možné resetovať hlasy v databáze!"

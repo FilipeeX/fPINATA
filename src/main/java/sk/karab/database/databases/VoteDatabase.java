@@ -18,7 +18,7 @@ public class VoteDatabase {
 
     private final String TABLE_QUERY = """
             CREATE TABLE IF NOT EXISTS `votes` (
-            	`amount` INT NOT NULL,
+            	`amount` INT NOT NULL
             );
             """;
     private final String ENTRY_QUERY = "INSERT INTO `votes` VALUES (0);";
@@ -128,16 +128,30 @@ public class VoteDatabase {
     }
 
 
-    private boolean _addVote() {
+    private boolean _addVotes(int amount) {
 
         int currentAmount = _getVotes();
-        return _setVotes(currentAmount + 1);
+        return _setVotes(currentAmount + amount);
     }
 
-    public static boolean addVote() {
-        return instance._addVote();
+    public static boolean addVotes(int amount) {
+        return instance._addVotes(amount);
     }
 
+
+    private boolean _removeVotes(int amount) {
+
+        int currentAmount = _getVotes();
+        int newAmount = currentAmount - amount;
+
+        if (newAmount < 0) return false;
+
+        return _setVotes(currentAmount - amount);
+    }
+
+    public static boolean removeVotes(int amount) {
+        return instance._removeVotes(amount);
+    }
 
     private boolean _resetVotes() {
         return _setVotes(0);

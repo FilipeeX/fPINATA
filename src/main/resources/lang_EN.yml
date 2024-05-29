@@ -2,7 +2,7 @@ help:
   - "&7>&8-------- &#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8--------&7<"
   - ""
   - "  &#FB4A58/pinata spawn [location] &8- &7manually spawns a pinata"
-  - "                           &8- &7* optionally: at a spawn location"
+  - "                                 &7* optionally: at a spawn location"
   - ""
   - "  &#FB4A58/pinata location add <name> &8- &7adds a named location"
   - "  &#FB4A58/pinata location remove <name> &8- &7removes a location"
@@ -20,6 +20,10 @@ player_only:
   - "%prefix &cThis action can be only done by a player!"
 no_permission:
   - "%prefix &cYou don't have the permission to do that!"
+invalid_number:
+  - "%prefix &cThe string %string isn't considered a valid number!"
+only_positive_numbers:
+  - "%prefix &cNumbers can't be negative, have to be above 0."
 
 location_name_too_long:
   - "%prefix &cYour location name %identifier is %length characters long, maximum allowed is 32."
@@ -58,3 +62,10 @@ spawn_location_success:
   - "%prefix &aSuccessfully summoned the pinata at the location %identifier."
 invalid_location:
   - "%prefix &cCouldn't spawn the pinata at %identifier, because the location wasn't found!"
+
+votes_add_failure:
+  - "%prefix &cAn unknown error has occurred, couldn't add votes to the database!"
+votes_remove_failure:
+  - "%prefix &cEither the result vote amount is negative or an unknown error has occurred, anyway couldn't remove votes from the database!"
+votes_reset_failure:
+  - "%prefix &cAn unknown error has occurred, couldn't reset the votes in the database!"
