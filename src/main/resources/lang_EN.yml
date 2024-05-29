@@ -1,7 +1,8 @@
 help:
   - "&7>&8-------- &#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8--------&7<"
   - ""
-  - "  &#FB4A58/pinata spawn &8- &7manually spawns a pinata"
+  - "  &#FB4A58/pinata spawn [location] &8- &7manually spawns a pinata"
+  - "                           &8- &7* optionally: at a spawn location"
   - ""
   - "  &#FB4A58/pinata location add <name> &8- &7adds a named location"
   - "  &#FB4A58/pinata location remove <name> &8- &7removes a location"
