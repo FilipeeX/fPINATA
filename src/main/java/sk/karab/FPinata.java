@@ -8,7 +8,8 @@ import sk.karab.configuration.ConfigId;
 import sk.karab.configuration.YmlConfig;
 import sk.karab.database.Database;
 import sk.karab.database.SafeSQL;
-import sk.karab.database.locations.LocationDatabase;
+import sk.karab.database.databases.VoteDatabase;
+import sk.karab.database.databases.LocationDatabase;
 import sk.karab.listeners.PinataListener;
 import sk.karab.messaging.Language;
 import sk.karab.messaging.Prefix;
@@ -90,6 +91,7 @@ public class FPinata extends JavaPlugin {
         new Database("fpinata.db", getDataFolder());
 
         new LocationDatabase();
+        new VoteDatabase();
     }
 
 

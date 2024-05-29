@@ -3,7 +3,7 @@ package sk.karab.commands.subcmds;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import sk.karab.commands.ISubCommand;
-import sk.karab.database.locations.LocationDatabase;
+import sk.karab.database.databases.LocationDatabase;
 import sk.karab.database.locations.PinataLocation;
 import sk.karab.messaging.Message;
 import sk.karab.messaging.Messaging;

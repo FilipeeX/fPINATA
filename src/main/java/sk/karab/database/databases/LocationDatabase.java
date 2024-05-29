@@ -1,4 +1,4 @@
-package sk.karab.database.locations;
+package sk.karab.database.databases;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -6,6 +6,8 @@ import org.bukkit.World;
 import sk.karab.database.Database;
 import sk.karab.database.ISQLTask;
 import sk.karab.database.SafeSQL;
+import sk.karab.database.locations.AtomicLocation;
+import sk.karab.database.locations.PinataLocation;
 
 import javax.annotation.Nullable;
 import java.sql.PreparedStatement;
