@@ -46,3 +46,10 @@ location_list_nothing_to_show:
   - "  &cNenašli sa žiadne lokácie na zobrazenie."
 location_list_failure:
   - "%prefix &cNastala chyba počas vyťahovaní informácií z databázy, mal by si nájsť viac detailov v konzoli."
+
+spawn_player_success:
+  - "%prefix &aPinata bola úspešne spawnutá na tvojej lokácií."
+spawn_location_success:
+  - "%prefix &aPinata bola úspešne spawnutá na lokácii %identifier."
+invalid_location:
+  - "%prefix &cPinata nemohla byť spawnutá na lokácií %identifier, pretože táto lokácia nebola nájdená!"
