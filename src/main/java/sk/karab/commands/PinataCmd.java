@@ -6,10 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import sk.karab.commands.subcmds.DebugSubCMD;
-import sk.karab.commands.subcmds.HelpSubCMD;
-import sk.karab.commands.subcmds.LocationSubCMD;
-import sk.karab.commands.subcmds.SpawnPinataSubCMD;
+import sk.karab.commands.subcmds.*;
 import sk.karab.util.PlayerUtil;
 
 import java.util.ArrayList;
@@ -30,6 +27,7 @@ public class PinataCmd implements TabExecutor {
         subCommands.add(new SpawnPinataSubCMD());
         subCommands.add(new DebugSubCMD());
         subCommands.add(new LocationSubCMD());
+        subCommands.add(new VoteSubCMD());
 
         random = new Random();
     }
