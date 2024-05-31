@@ -20,6 +20,7 @@ repositories {
     */
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/central")
+    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 }
 
 
@@ -31,6 +32,7 @@ dependencies {
 
     // Pick only one of these and read the comment in the repositories block.
     compileOnly("org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT") // The Spigot API with no shadowing. Requires the OSS repo.
+    compileOnly("me.clip:placeholderapi:2.11.6")
 }
 
 

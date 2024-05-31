@@ -14,8 +14,7 @@ import sk.karab.listeners.PinataListener;
 import sk.karab.messaging.Language;
 import sk.karab.messaging.Prefix;
 import sk.karab.pinata.Pinata;
-import sk.karab.util.NumberUtil;
-import sk.karab.util.Log;
+import sk.karab.util.*;
 
 import java.io.File;
 import java.util.Objects;
@@ -46,6 +45,7 @@ public class FPinata extends JavaPlugin {
 
         registerCommands();
         registerListeners();
+        hookIntoDependencies();
 
         Log.info("Successfully enabled fPINATA");
     }
@@ -82,6 +82,7 @@ public class FPinata extends JavaPlugin {
     private void createInstances() {
         new Language();
         new NumberUtil();
+        new ListUtil();
     }
 
 
@@ -107,6 +108,12 @@ public class FPinata extends JavaPlugin {
         pluginManager.registerEvents(new PinataListener(), this);
     }
 
+
+    private void hookIntoDependencies() {
+        new Dependencies(
+                new Dependency("PlaceholderAPI", true)
+        );
+    }
 
     private void killPinatas() {
         try {     // this is done because of a really weird bug with loading the Pinata class, no idea why or what's happening, but this does silence it
