@@ -3,6 +3,8 @@ help:
   - ""
   - "  &#FB4A58/pinata spawn [location] &8- &7manually spawns a pinata"
   - "                                 &7* optionally: at a spawn location"
+  - "  &#FB4A58/pinata kill &8- &7kills all pinatas"
+  - "  &#FB4A58/pinata stop &8- &7despawns all pinatas, does not hand out rewards"
   - ""
   - "  &#FB4A58/pinata location add <name> &8- &7adds a named location"
   - "  &#FB4A58/pinata location remove <name> &8- &7removes a location"
@@ -69,3 +71,8 @@ votes_remove_failure:
   - "%prefix &cEither the result vote amount is negative or an unknown error has occurred, anyway couldn't remove votes from the database!"
 votes_reset_failure:
   - "%prefix &cAn unknown error has occurred, couldn't reset the votes in the database!"
+
+kill_success:
+  - "%prefix &aSuccessfully killed all the pinatas, and handed out the rewards."
+stop_success:
+  - "%prefix &aSuccessfully despawned all the pinatas, no rewards were handed out."

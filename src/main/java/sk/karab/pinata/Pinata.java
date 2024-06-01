@@ -41,6 +41,12 @@ public class Pinata {
     }
 
 
+    public void despawn() {
+        camel.remove();
+        pinatas.remove(this);
+    }
+
+
     public static ArrayList<Pinata> getPinatas() {
         return pinatas;
     }
