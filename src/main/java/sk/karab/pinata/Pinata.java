@@ -7,6 +7,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class Pinata {
 
@@ -41,12 +42,6 @@ public class Pinata {
     }
 
 
-    public void despawn() {
-        camel.remove();
-        pinatas.remove(this);
-    }
-
-
     public static ArrayList<Pinata> getPinatas() {
         return pinatas;
     }
@@ -61,6 +56,12 @@ public class Pinata {
         }
 
         return null;
+    }
+
+
+    public static void despawnAll() {
+        for (Pinata pinata : pinatas) pinata.camel.remove();
+        pinatas.clear();
     }
 
 

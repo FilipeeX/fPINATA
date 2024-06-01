@@ -73,6 +73,4 @@ votes_reset_failure:
   - "%prefix &cNastala neznáma chyba, nebolo možné resetovať hlasy v databáze!"
 
 kill_success:
-  - "%prefix &aVšetky pinaty boli úspešne zabité, a odmeny boli rozdané."
-stop_success:
   - "%prefix &aVšetky pinaty boli despawnuté, odmeny neboli rozdané."

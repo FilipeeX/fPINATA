@@ -55,6 +55,12 @@ public class Database {
     }
 
 
+    public void close() {
+        ISQLTask task = () -> connection.close();
+        SafeSQL.run(task);
+    }
+
+
     public String getFileName() {
         return fileName;
     }

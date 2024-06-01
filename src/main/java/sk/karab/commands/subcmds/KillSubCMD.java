@@ -30,7 +30,7 @@ public class KillSubCMD implements ISubCommand {
             return;
         }
 
-        Pinata.getPinatas().forEach((pinata -> pinata.getCamel().setHealth(0)));
+        Pinata.despawnAll();
         Messaging.send(Message.KILL_SUCCESS, sender);
     }
 
