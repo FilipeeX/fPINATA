@@ -1,2 +1,99 @@
+#
+# ░▒▓████████▓▒░▒▓███████▓▒░░▒▓█▓▒░▒▓███████▓▒░ ░▒▓██████▓▒░▒▓████████▓▒░▒▓██████▓▒░
+# ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░
+# ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░
+# ░▒▓██████▓▒░ ░▒▓███████▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ ░▒▓█▓▒░  ░▒▓████████▓▒░
+# ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░
+# ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░
+# ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░
+#
+#                        Made by: Filip 'filipeex' Karab
+#             Fully customisable pinata plugin, for completely free.
+
+
+# This peace of colored text called a 'prefix', is put before every message.
+# If you don't want to have any prefix, you can just leave this as is, and edit every message in your respected lang file.
 prefix: '&#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8〣&r'
+
+# What language should the plugin use?
+# You can see all the available languages in the 'languages/' folder.
+# You can then edit all the messages in a file with a name like this: 'lang_EN.yml' (replace EN with your language).
 language: 'EN'
+
+# What location should the pinata spawn at by default?
+# You can create locations with /pinata location add <name> - the location will be created at your player location.
+# When a console executes a command like /pinata spawn, with no specified location,
+# this location will be used to spawn a pinata.
+spawn_location: ''
+
+# How many votes do we need to spawn a pinata?
+# If you wish to not spawn the pinata automatically when the vote counter reaches this number,
+# you can just set this number to -1
+# In the case that you want to use this feature, in your vote-handling plugin, set it up so
+# every time a player votes, console executes the command /pinata votes add 1 - which increases the vote counter.
+votes_needed: 32
+
+# When the vote goal is reached, how many pinatas should be spawned?
+# Beware: if you set this number too high, you might experience TPS drops (server lag).
+spawn_amount: 1
+
+# If a player tries to hit the pinata with any of these items, they'll get an error message in chat.
+# If you don't need this, just set this option up like so: 'item_blacklist: {}'
+item_blacklist:
+  - BARRIER
+  - COMMAND_BLOCK
+
+# If you want, you can set up a list of items, which the player would have to use to hit the pinata.
+# If you need to, fill up the list with whitelisted items, and then switch the option 'use_item_whitelist' to true.
+use_item_whitelist: false
+item_whitelist:
+  - TOTEM_OF_UNDYING
+
+# You can choose weather to summon fireworks when the pinata dies.
+# Below, you can also decide on how many of them should spawn.
+# Each firework is offset by 3 ticks (150ms), and spawns in a random location around the dead pinata.
+spawn_fireworks: true
+firework_amount: 10
+
+# Should we check for a permission before allowing a player to hit the pinata for rewards?
+# If so, you can choose which one.
+use_hit_permission: false
+hit_permission: 'fpinata.allowhit'
+
+# When any of these events listed below happen, the plugin will go through all the commands,
+# and for each one, it will roll a dice with the set chance (%) of rolling a "yes", when a "yes" is rolled,
+# the command is executed. Feel free to play around with these, it's fun.
+# These can also be useful for integration w/ other plugins.
+# In all of these, you can use the PlaceholderAPI placeholders, and they should be replaced with no problem.
+
+countdown_start: {}
+countdown_end: {}
+on_spawn: {}
+
+on_hit:
+  0:
+    chance: 100
+    command: 'eco give %player 100'
+  1:
+    chance: 50
+    command: 'minecraft:give %player diamond 1'
+on_winning_hit:
+  0:
+    chance: 100
+    command: 'minecraft:give %player netherite_block 1'
+
+# This is run per-player who touched the pinata.
+# You can use the 'global: true' option, to run this command only once, and not for every player.
+after_death:
+  0:
+    chance: 100
+    command: 'eco give %player 50'
+  1:
+    chance: 50
+    command: 'minecraft:give %player diamond 2'
+  2:
+    chance: 100
+    global: true
+    command: "say Congrats players, you've beaten me, for now..."
+
+# todo pinata category
