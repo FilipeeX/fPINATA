@@ -1,0 +1,6 @@
+Version update (1.0.0 -> 1.1.0)
+    1. Change the version in Project Settings
+    2. Change the version in build.gradle.kts
+    3. Change the version in resources/plugin.yml
+    4. Change the version in java/sk/karab/dependencies/placeholderapi/PapiPinataExpansion.java
+    5. Change the version in Project Settings -> Artifacts

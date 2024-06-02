@@ -10,6 +10,8 @@ import sk.karab.database.Database;
 import sk.karab.database.SafeSQL;
 import sk.karab.database.databases.VoteDatabase;
 import sk.karab.database.databases.LocationDatabase;
+import sk.karab.dependencies.DependencySys;
+import sk.karab.dependencies.placeholderapi.PapiPinataExpansion;
 import sk.karab.listeners.PinataListener;
 import sk.karab.messaging.Language;
 import sk.karab.messaging.Prefix;
@@ -111,9 +113,20 @@ public class FPinata extends JavaPlugin {
 
 
     private void hookIntoDependencies() {
-        new Dependencies(
-                new Dependency("PlaceholderAPI", true)
+
+        new DependencySys(
+                new Dependency("PlaceholderAPI", false)
         );
+
+        registerPlaceholderExpansion();
+    }
+
+
+    private void registerPlaceholderExpansion() {
+
+        if (!DependencySys.isLoaded("PlaceholderAPI")) return;
+
+        new PapiPinataExpansion().register();
     }
 
 

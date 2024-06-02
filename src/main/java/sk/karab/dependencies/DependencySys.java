@@ -1,21 +1,24 @@
-package sk.karab.util;
+package sk.karab.dependencies;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import sk.karab.FPinata;
+import sk.karab.util.Dependency;
+import sk.karab.util.ListUtil;
+import sk.karab.util.Log;
 
 import java.util.ArrayList;
 
-public class Dependencies {
+public class DependencySys {
 
 
-    public static Dependencies instance;
+    public static DependencySys instance;
 
     private ArrayList<Dependency> allDependencies;
     private ArrayList<Dependency> loadedDependencies;
 
 
-    public Dependencies(Dependency ... dependencies) {
+    public DependencySys(Dependency ... dependencies) {
 
         if (instance != null) return;
         instance = this;

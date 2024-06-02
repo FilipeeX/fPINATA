@@ -1,3 +1,11 @@
+placeholder_votes_so_far: '%amount'
+placeholder_votes_needed: '%amount'
+placeholder_votes_left: '%amount'
+placeholder_pinata_exists: '&aPRAVDA'
+placeholder_pinata_doesnt_exist: '&cNEPRAVDA'
+placeholder_pinata_count: '%amount'
+placeholder_unknown: '&cINVALIDNÝ'
+
 help:
   - "&7>&8-------- &#FB4A58&lᴘ&#FA4179&li&#F9389B&lɴ&#F92FBC&lᴀ&#F826DE&lт&#F71DFF&lᴀ &8--------&7<"
   - ""
