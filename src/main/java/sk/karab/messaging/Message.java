@@ -39,7 +39,8 @@ public enum Message {
     VOTES_RESET_FAILURE,
 
     KILL_SUCCESS,
-    STOP_SUCCESS
+
+    RELOAD_SUCCESS
 
 
 }

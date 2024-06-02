@@ -23,6 +23,7 @@ help:
   - "  &#FB4A58/pinata votes remove <amount> &8- &7subtracts votes"
   - "  &#FB4A58/pinata votes reset &8- &7resets the vote counter"
   - ""
+  - "  &#FB4A58/pinata reload &8- &7reloads the config and lang"
   - "  &#FB4A58/pinata help &8- &7shows this help message"
   - ""
   - "&7>&8-----------------------&7<"
@@ -82,3 +83,6 @@ votes_reset_failure:
 
 kill_success:
   - "%prefix &aSuccessfully despawned all the pinatas, no rewards were handed out."
+
+reload_success:
+  - "%prefix &aSuccessfully reloaded the config and the lang."

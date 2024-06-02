@@ -14,11 +14,11 @@ public class Language {
 
         if (instance == null) instance = this;
         else return;
-        detectLanguage();
+        _detectLanguage();
     }
 
 
-    private void detectLanguage() {
+    private void _detectLanguage() {
         try {
             language = ConfigId.valueOf("LANG_" + YmlConfig.find(ConfigId.CONFIG).getString("language").toUpperCase());
         } catch (IllegalArgumentException exception) {
@@ -26,11 +26,14 @@ public class Language {
         }
     }
 
+    public static void detectLanguage() {
+        instance._detectLanguage();
+    }
+
 
     public ConfigId _getLanguageConfigId() {
         return language;
     }
-
 
     public static ConfigId getLanguageConfigId() {
         return instance._getLanguageConfigId();

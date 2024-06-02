@@ -4,6 +4,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import sk.karab.util.PluginFileTool;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -85,6 +86,11 @@ public class YmlConfig {
 
     public List<String> getStringList(String key) {
         return config.getStringList(key);
+    }
+
+
+    public static ArrayList<YmlConfig> getLoadedConfigs() {
+        return new ArrayList<>(storedConfigs.values());
     }
 
 

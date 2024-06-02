@@ -23,6 +23,7 @@ help:
   - "  &#FB4A58/pinata votes remove <počet> &8- &7odpočíta hlasy"
   - "  &#FB4A58/pinata votes reset &8- &7resetuje počítadlo hlasov"
   - ""
+  - "  &#FB4A58/pinata reload &8- &7reloadne config a lang"
   - "  &#FB4A58/pinata help &8- &7ukáže túto správu"
   - ""
   - "&7>&8-----------------------&7<"
@@ -82,3 +83,6 @@ votes_reset_failure:
 
 kill_success:
   - "%prefix &aVšetky pinaty boli despawnuté, odmeny neboli rozdané."
+
+reload_success:
+  - "%prefix &aConfig a lang boli úspešne reloadnuté."

@@ -29,6 +29,7 @@ public class PinataCmd implements TabExecutor {
         subCommands.add(new LocationSubCMD());
         subCommands.add(new VoteSubCMD());
         subCommands.add(new KillSubCMD());
+        subCommands.add(new ReloadSubCMD());
 
         random = new Random();
     }
